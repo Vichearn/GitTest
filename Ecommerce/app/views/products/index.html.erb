@@ -1,0 +1,29 @@
+<h3 class="text-center">Products for Sale</h3>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <% @products.each do |product| %>
+      <%= render "product_row", product: product, order_item: @order_item %>
+    <% end %>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead class="thead-inverse">                         
+  <tr>                      
+    <th>Name</th>
+    <th>Price</th>
+    <th>Status</th>
+    <th>Order Item</th>
+  </tr>
+  </thead>
+<% @products.each do |p| %>
+  <tr>
+    <td><%= p.name %></td>
+    <td><%= p.price %></td>
+    <td><%= p.active %></td>
+    <td><%= p.order_items.try(:quantity) %></td>
+
+  </tr>
+<% end %>
+</table> 
